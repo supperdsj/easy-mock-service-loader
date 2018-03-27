@@ -1,0 +1,22 @@
+{
+  "username": "emnsl",
+  "password": "111111",
+  "path": "/example",
+  "mockServer": "https://www.easy-mock.com",
+  "baseUrl": "https://www.easy-mock.com/mock/{__projectId}",
+  "useEntity": {
+    "name": "EntityClass",
+    "path": "easy-mock-ng-service-loader/lib/entity.class"
+  },
+  "useEntityDecorator": {
+    "name": "EntityDecorator",
+    "path": "easy-mock-ng-service-loader/lib/entity.decorator"
+  },
+  "projects": [
+    {
+      "title": "demo",
+      "name": "demoProject",
+      "id": "5aba151166dc89079e232310"
+    }
+  ]
+}
