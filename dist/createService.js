@@ -48,7 +48,6 @@ import {EntityDecorator} from '../../entity.decorator';
   url: '${mock.url}',
   method: '${mock.method}',
   serviceName: '${upperCaserForFirstLetter(mock.serviceName)}',
-  preUrl: '${config.baseUrl}${project.url}',
   __projectId: '${project._id}'
 })
 export class ${upperCaserForFirstLetter(project.name)}${upperCaserForFirstLetter(mock.serviceName)}DataService extends EntityClass {

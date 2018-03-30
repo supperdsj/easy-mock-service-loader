@@ -4,12 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
+    "start": "node createService.js && ng serve",
+    "build": "node createService.js && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "create-service": "node createService.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
