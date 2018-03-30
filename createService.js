@@ -3,9 +3,9 @@
 const axios = require('axios');
 const fs = require('fs');
 const child_process = require('child_process');
-const config = require(process.cwd()+'/createServiceConfig.json');
+const config = require(process.cwd() + '/createServiceConfig.json');
 const projects = config.projects;
-const path = process.cwd() + config.path;
+const path = process.cwd() + '/' + config.path + '/services';
 const username = config.username;
 const password = config.password;
 const mockServer = config.mockServer;
@@ -32,7 +32,7 @@ const getMocksByProject = async (projectId) => {
 
 const saveService = (mock, project) => {
     // console.log();
-    mock.serviceName = ((mock.method + mock.url).split('/').filter(str=>str.indexOf(':')<0&&str.trim()!=='').map(upperCaserForFirstLetter)).join('');
+    mock.serviceName = mock.serviceName||((mock.method + mock.url).split('/').filter(str => str.indexOf(':') < 0 && str.trim() !== '').map(upperCaserForFirstLetter)).join('');
     // console.log(mock);
     const temp =
         `/* 
@@ -40,11 +40,11 @@ const saveService = (mock, project) => {
 */
 
 import {Injectable} from '@angular/core';
-${config.useEntity?`import {${config.useEntity.name}} from '${config.useEntity.path}'`:`import {EntityClass} from 'easy-mock-ng-service-loader/lib/entity.class'`};
-${config.useEntityDecorator?`import {${config.useEntityDecorator.name}} from '${config.useEntityDecorator.path}'`:`import {EntityDecorator} from 'easy-mock-ng-service-loader/lib/entity.decorator'`};
+import {EntityClass} from '../../entity.class';
+import {EntityDecorator} from '../../entity.decorator';
 
 @Injectable()
-@${config.useEntityDecorator?config.useEntityDecorator.name:'EntityDecorator'}({
+@EntityDecorator({
   url: '${mock.url}',
   method: '${mock.method}',
   serviceName: '${upperCaserForFirstLetter(mock.serviceName)}',
@@ -81,15 +81,24 @@ const buildModule = (serviceArray) => {
         let serviceConstructors = serviceArray.map(s => `private ${lowerCaserForFirstLetter(s.serviceName)}: ${s.serviceName}`).join(',\n');
         let serviceImports = serviceArray.map(s => `import {${s.serviceName}} from '${s.filePath}';`).join('\n');
         let moduleProivdes = serviceArray.map(s => s.serviceName).join(',\n');
-        let requestsServiceArrayConfig = serviceArray.map(s => `{serviceName: '${lowerCaserForFirstLetter(s.serviceName)}', service: ${lowerCaserForFirstLetter(s.serviceName)}}`);
+        let requestsServiceArrayConfig = serviceArray.map(s => `{name: '${lowerCaserForFirstLetter(s.serviceName)}', service: ${lowerCaserForFirstLetter(s.serviceName)}}`);
         let serviceTemp = `import {Injectable} from '@angular/core';
-import {RequestsDataServiceBasic} from 'easy-mock-ng-service-loader/lib/requests-data-service-basic';
 ${serviceImports}
 @Injectable()
-export class RequestsDataService extends RequestsDataServiceBasic {
+export class RequestsDataService {
+  requestsServiceArray = [];
   constructor(${serviceConstructors}) {
-    super();
     this.requestsServiceArray = [${requestsServiceArrayConfig.join(',\n')}];
+  }
+  
+  getServiceByName(serviceName: string) {
+    const service = this.requestsServiceArray.find(s => s.name.toLocaleLowerCase() === serviceName.toLowerCase());
+    console.log(service);
+    if (!service) {
+      throw new Error('Request service name not found');
+    } else {
+      return service.service;
+    }
   }
 }
 export let RequestsDataServicesDepends = [${moduleProivdes},\nRequestsDataService];

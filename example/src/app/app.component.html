@@ -1,0 +1,6 @@
+<h3>request list:</h3>
+<div *ngFor="let service of requestDataService.requestsServiceArray">{{service.name}}
+  <button (click)="sendRequest(service.name)">Send</button>
+</div>
+<h3>response(this.data):</h3>
+<div>{{data|json}}</div>

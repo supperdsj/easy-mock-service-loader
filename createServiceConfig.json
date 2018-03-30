@@ -1,17 +1,9 @@
 {
   "username": "emnsl",
   "password": "111111",
-  "path": "/example",
+  "path": "example",
   "mockServer": "https://www.easy-mock.com",
   "baseUrl": "https://www.easy-mock.com/mock/{__projectId}",
-  "useEntity": {
-    "name": "EntityClass",
-    "path": "entityService/entity.class"
-  },
-  "useEntityDecorator": {
-    "name": "EntityDecorator",
-    "path": "entityService/entity.decorator"
-  },
   "projects": [
     {
       "title": "demo",

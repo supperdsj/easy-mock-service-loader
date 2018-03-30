@@ -1,0 +1,26 @@
+{
+  "username": "emnsl",
+  "password": "111111",
+  "path": "src/entityService",
+  "mockServer": "https://www.easy-mock.com",
+  "baseUrl": "https://www.easy-mock.com/mock/{__projectId}",
+  "useEntity": {
+    "name": "EntityClass",
+    "path": "src/entityService/entity.class"
+  },
+  "useEntityDecorator": {
+    "name": "EntityDecorator",
+    "path": "src/entityService/entity.decorator"
+  },
+  "useDataServiceBasic": {
+    "name": "RequestsDataServiceBasic",
+    "path": "src/entityService/requests-data-service-basic"
+  },
+  "projects": [
+    {
+      "title": "src/entityService",
+      "name": "demoProject",
+      "id": "5aba151166dc89079e232310"
+    }
+  ]
+}
