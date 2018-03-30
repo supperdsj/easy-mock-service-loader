@@ -1,25 +1,28 @@
 {
   "name": "easy-mock-ng-service-loader",
-  "version": "1.0.26",
+  "version": "1.0.33",
   "description": "a easy way to sync request services from easy-mock.com",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/supperdsj/easy-mock-service-loader.git"
   },
   "bin": {
-    "create-service": "./lib/createService.js"
+    "create-service": "createService.js"
   },
   "files": [
     "config",
-    "lib"
+    "lib",
+    "tsconfig.json"
   ],
   "keywords": [
     "request",
     "angular",
+    "ng",
+    "service",
     "easy-mock",
     "mock"
   ],

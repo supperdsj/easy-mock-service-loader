@@ -6,11 +6,11 @@
   "baseUrl": "https://www.easy-mock.com/mock/{__projectId}",
   "useEntity": {
     "name": "EntityClass",
-    "path": "easy-mock-ng-service-loader/lib/entity.class"
+    "path": "entityService/entity.class"
   },
   "useEntityDecorator": {
     "name": "EntityDecorator",
-    "path": "easy-mock-ng-service-loader/lib/entity.decorator"
+    "path": "entityService/entity.decorator"
   },
   "projects": [
     {

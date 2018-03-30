@@ -89,7 +89,7 @@ ${serviceImports}
 export class RequestsDataService extends RequestsDataServiceBasic {
   constructor(${serviceConstructors}) {
     super();
-    this.requestsServiceArray = [${requestsServiceArrayConfig.join(',\n')}]
+    this.requestsServiceArray = [${requestsServiceArrayConfig.join(',\n')}];
   }
 }
 export let RequestsDataServicesDepends = [${moduleProivdes},\nRequestsDataService];

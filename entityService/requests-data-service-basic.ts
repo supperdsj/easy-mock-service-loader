@@ -3,7 +3,7 @@ import {Entity} from './entity.interface';
 export class RequestsDataServiceBasic {
   requestsServiceArray: Array<{ serviceName: string, service: Entity }> = [];
 
-  getServiceByName(serviceName) {
+  getServiceByName(serviceName:string) {
     const service = this.requestsServiceArray.find(s => s.serviceName.toLocaleLowerCase() === serviceName.toLowerCase());
     console.log(service);
     if (!service) {
