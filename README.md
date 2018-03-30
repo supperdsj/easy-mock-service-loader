@@ -336,6 +336,6 @@ example 内的范例项目使用 angular-cli 搭建，使用时拷贝 dist 内�
 
 ## 结语
 本文主要基于 Angular 实现该思想，欢迎实现其他语言的同类工具来我的[博客](http://blog.dongsj.cn) http://blog.dongsj.cn 留言。
-博客新开欢迎访问留言，之后还会继续更新，下期应该预计应该是使用 Component 类继承和 EntityService 管理端页面的开发。
+博客新开欢迎访问留言，近期会更新使用 Component 类继承和 EntityService 管理端页面的开发。
 
 
