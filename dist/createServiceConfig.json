@@ -1,7 +1,7 @@
 {
   "username": "emnsl",
   "password": "111111",
-  "path": "example",
+  "path": "src/entityService",
   "mockServer": "https://www.easy-mock.com",
   "projects": [
     {
