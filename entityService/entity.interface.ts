@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 
-export interface Entity {
+export interface EntityInterface {
     request(params: Object): any;
 
     getData(component: Component, params?: Object, cb?: (data: Object, err: Error) => {}, componentP?: string): any;

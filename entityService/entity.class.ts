@@ -1,11 +1,11 @@
 import {Component, Injectable} from '@angular/core';
-import {Entity} from './entity.interface';
+import {EntityInterface} from './entity.interface';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class EntityClass implements Entity {
+export class EntityClass implements EntityInterface {
     subject: any;
 
     private httpMethod(params: { [param: string]: string | string[]; }): Observable<any> {
