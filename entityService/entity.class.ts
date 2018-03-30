@@ -68,22 +68,12 @@ export class EntityClass implements Entity {
             this.subject.unsubscribe();
         }, (err) => {
             if (err.status === 0) {
-                this.errCode0Resolver(() => {
-                    this.getData(component, params, cb, componentP);
-                });
+                this.getData(component, params, cb, componentP);
             } else {
-                this.errCodeOtherResolver(err.status);
+                cb({}, err);
             }
         }, () => {
         });
-    }
-
-    errCode0Resolver(cb = () => {
-    }) {
-        cb();
-    }
-
-    errCodeOtherResolver(codeNum: any) {
     }
 
     getData(component: Component, params: Object = {}, cb = (data: Object, err: Error = undefined) => {
