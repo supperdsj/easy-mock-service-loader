@@ -3,14 +3,15 @@ import {EntityInterface} from './entity.interface';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {environment} from "../environments/environment";
 
 @Injectable()
 export class EntityClass implements EntityInterface {
     subject: any;
 
     private httpMethod(params: { [param: string]: string | string[]; }): Observable<any> {
-        const requestUrl = this.prefixUrl(this['preUrl'] + this['url'], params);
-        switch (this as any['method']) {
+        const requestUrl = this.prefixUrl(environment.baseUrl + this['url'], params);
+        switch (this['method']) {
             case 'post':
                 return this.http.post(requestUrl, params, {params});
             case 'patch':
@@ -28,6 +29,7 @@ export class EntityClass implements EntityInterface {
     }
 
     private prefixUrl(url: any, params: Object): string {
+        // 可附加部分全局参数
         for (const name in params) {
             if (((typeof params[name]) === 'string' || (typeof params[name]) === 'number') /*&& params[name] !== ''*/) {
                 url = url.replace(new RegExp('{' + name + '}', 'gm'), params[name]);
@@ -50,30 +52,26 @@ export class EntityClass implements EntityInterface {
         return response;
     }
 
-    request(params: any): Observable<any> {
-        return this.httpMethod(params)
+    sendRequest(component: any = undefined, params: any, cb = (data: any, err: Error = undefined) => {
+    }, componentP = '') {
+        this.subject = this.httpMethod(params)
             .map(this.responseResolver)
             .map((resp) => {
                 return resp;
+            }).subscribe((resp) => {
+                if (componentP && component) {
+                    component[componentP] = resp.data;
+                }
+                cb(resp.data);
+                this.subject.unsubscribe();
+            }, (err) => {
+                if (err.status === 0) {
+                    this.getData(component, params, cb, componentP);
+                } else {
+                    cb({}, err);
+                }
+            }, () => {
             });
-    }
-
-    sendRequest(component: any, params: any, cb = (data: any, err: Error = undefined) => {
-    }, componentP = '') {
-        this.subject = this.request(params).subscribe((resp) => {
-            if (componentP) {
-                component[componentP] = resp.data;
-            }
-            cb(resp.data);
-            this.subject.unsubscribe();
-        }, (err) => {
-            if (err.status === 0) {
-                this.getData(component, params, cb, componentP);
-            } else {
-                cb({}, err);
-            }
-        }, () => {
-        });
     }
 
     getData(component: Component, params: Object = {}, cb = (data: Object, err: Error = undefined) => {

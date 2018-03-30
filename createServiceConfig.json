@@ -3,7 +3,6 @@
   "password": "111111",
   "path": "example",
   "mockServer": "https://www.easy-mock.com",
-  "baseUrl": "https://www.easy-mock.com/mock/{__projectId}",
   "projects": [
     {
       "title": "demo",
