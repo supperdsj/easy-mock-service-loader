@@ -190,7 +190,7 @@ export class DemoProjectGetDataService extends EntityClass {
 
 github:https://github.com/supperdsj/easy-mock/tree/master
 
-之后我们只需编写脚本 createService.js 通过 Http 请求从 Easy-mock 读取数据并生成 EntityService 即可，代码如下：
+之后我们只需编写脚本 createService.js 通过 Http 请求从 Easy-mock 读取数据并生成 EntityService ，并生成了 RequestsDataService 管理所有 EntityService 并将全部生成的 Service 放在数组 RequestsDataServicesDepends 内简化依赖注入，代码如下：
 
 ```JavaScript
 
@@ -332,10 +332,10 @@ buildServices().then(() => {
 
 ## 范例
 github：https://github.com/supperdsj/easy-mock-service-loader
-example 内的范例项目使用 angular-cli 搭建，使用时拷贝 dist 到项目目录下，修改 createServiceConfig.json 内的各配置对应 Easy-mock 项目的配置安装依赖后即可执行 npm run start。
+example 内的范例项目使用 angular-cli 搭建，使用时拷贝 dist 内文件到项目目录下，修改 createServiceConfig.json 内的各配置对应 Easy-mock 项目的配置安装依赖后即可执行 npm run start。
 
 ## 结语
-本文主要基于 Angular 实现该思想，欢迎实现其他语言的同类工具来我[博客](http://blog.dongsj.cn)留言。
+本文主要基于 Angular 实现该思想，欢迎实现其他语言的同类工具来我的[博客](http://blog.dongsj.cn) http://blog.dongsj.cn 留言。
 博客新开欢迎访问留言，之后还会继续更新，下期应该预计应该是使用 Component 类继承和 EntityService 管理端页面的开发。
 
 
