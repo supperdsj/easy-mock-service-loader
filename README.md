@@ -3,7 +3,7 @@
 ## 背景
 随着 Angular, Vue, React 等 SPA 框架的普及，前后端分离的开发方式已经成为了主流，而由于前后端的并行开发，接口联调则成为了经常会出现问题的环节。
 前后端接口（Interface）的调用本身实际上可看作前后端数据的调用过程，而 Http 只是实现前后端接口调用的手段而已。但前后端的接口联调工作往往会有很大一部分的时间花费在文档同步、URL 修改等繁复的机械性工作中。
-本文旨在抛砖引玉，介绍我们团队内 angular 项目正在使用的接口同步思想，使用自动同步接口配置的方法弱化 Http 接口的存在，
+本文旨在抛砖引玉，介绍我们团队内 angular 项目正在使用的接口同步思想，使用自动同步接口配置的方法弱化 Http 接口的存在。
 
 ## 使用 [Easy-mock](https://github.com/easy-mock/easy-mock/blob/dev/README.zh-CN.md) 书写接口文档
 Easy Mock 是一个可视化，并且能快速生成模拟数据的持久化服务，具有以下特性：
@@ -335,7 +335,7 @@ github：https://github.com/supperdsj/easy-mock-service-loader
 example 内的范例项目使用 angular-cli 搭建，使用时拷贝 dist 内文件到项目目录下，修改 createServiceConfig.json 内的各配置对应 Easy-mock 项目的配置安装依赖后即可执行 npm run start。
 
 ## 结语
-本文主要基于 Angular 实现该思想，欢迎实现其他语言的同类工具来我的[博客](http://blog.dongsj.cn) http://blog.dongsj.cn 留言。
+本文主要基于 Angular 实现该思想，欢迎实现其他语言的同类工具来我的[博客（http://blog.dongsj.cn）](http://blog.dongsj.cn) 留言。
 博客新开欢迎访问留言，近期会更新使用 Component 类继承和 EntityService 管理端页面的开发。
 
 
